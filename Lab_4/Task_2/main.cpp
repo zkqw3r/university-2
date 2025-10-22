@@ -3,7 +3,7 @@
 #include <algorithm>
 
 
-void set_diff(const std::set<int>& setA, const std::set<int>& setB) {
+void findMax(const std::set<int>& setA, const std::set<int>& setB) {
     std::set<int> diff;
     std::set_difference(
         setA.begin(), setA.end(),
@@ -50,7 +50,7 @@ int main() {
         setB.insert(val);
     }
 
-    set_diff(setA, setB);
+    findMax(setA, setB);
 
     setA.clear();
     setB.clear();
@@ -58,4 +58,5 @@ int main() {
     system("PAUSE");
 
     return 0;
+
 }
