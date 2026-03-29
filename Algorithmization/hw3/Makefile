@@ -9,11 +9,3 @@ main: main.cpp sorts.cpp
 test: test.cpp sorts.cpp
 	$(CXX) $(CXXFLAGS) -o test test.cpp sorts.cpp
 
-run: main
-	./main
-
-run-test: test
-	./test
-
-clean:
-	rm -f main test
