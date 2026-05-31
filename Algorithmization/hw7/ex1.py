@@ -5,6 +5,34 @@ class Node:
         self.right = right
 
 
+def buildTree(values):
+    if not values or values[0] == '0':
+        return None
+        
+    root = Node(int(values[0]))
+    queue = [root]
+    i = 1
+    
+    while i < len(values):
+        current = queue.pop(0)
+        
+        if i < len(values):
+            val = values[i]
+            if val != '0':
+                current.left = Node(int(val))
+                queue.append(current.left)
+            i += 1
+            
+        if i < len(values):
+            val = values[i]
+            if val != '0':
+                current.right = Node(int(val))
+                queue.append(current.right)
+            i += 1
+            
+    return root
+
+
 def isAnagram(root):
     if root == None:
         return True
@@ -22,16 +50,13 @@ def isMirror(left, right):
 
 
 def main():
-    node_1 = Node(1, 
-                Node(2, Node(4), Node(3)),
-                Node(2, Node(3), Node(4)))
-    node_2 = Node(1, 
-                Node(2, Node(3), Node(4)),
-                Node(2, Node(3), Node(4)))
-
-    print("Test 1 (True):", isAnagram(node_1))
-    print("Test 2 (False):", isAnagram(node_2))
-
+    print("Введите элементы дерева через пробел (если элемента нет - 0):")
+    user_input = input().split()
+    
+    root = buildTree(user_input)
+    
+    result = isAnagram(root)
+    print("Результат проверки:", result)
 
 if __name__ == "__main__":
     main()
